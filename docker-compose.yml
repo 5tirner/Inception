@@ -1,0 +1,7 @@
+version: "3.8"
+services:
+  pageweb:
+    image: nginx
+    ports:
+      - "9999:80"
+    restart: always

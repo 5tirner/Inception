@@ -1,11 +1,16 @@
 UP	= docker-compose up -d
 
-BUILD	= docker-compose up --build
+BUILD	= docker-compose build
 
 DOWN	= docker-compose down
 
-up:
-	cd srcs && $(UP)
+SRCS	= cd srcs
 
-down:
-	cd srcs && $(DOWN)
+up :
+	$(SRCS) && $(UP)
+
+build :
+	$(SRCS) && $(UP)
+
+down :
+	$(SRCS) && $(DOWN)

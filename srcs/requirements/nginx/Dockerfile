@@ -6,9 +6,8 @@ RUN     apt install nginx -y
 
 # For Security i will install openssl to generte a self-signed SSLcertificate.
 # It used for securing the communication between the NGINX server and clients,
-#over HTTPS (HTTP Secure).
-
-# Generate a self-signed SSL certificate
+# over HTTPS (HTTP Secure).
+# Start Generate a self-signed SSL certificate
 # initiates a certificate request and signing process.
 # -x509: Specifies that a self-signed certificate should be generated.
 # -nodes: Indicates that the private key should not be encrypted with a passphrase.
@@ -20,12 +19,12 @@ RUN     apt install nginx -y
 RUN apt install openssl \
     && openssl req -x509 -nodes \
     -days 365 \
-    -subj "/C=MOROCO/L=BENGUERIR/O=1337FIL/CN=zasabri.42.fr" \
+    -subj "/C=MO/L=BG/O=1337FIL/CN=zasabri.42.fr" \
     -newkey rsa:4096 \
     -keyout /etc/ssl/private/nk.key \
     -out /etc/ssl/certs/nc.crt;
 # /etc/ssl/private/ is a common directory on Unix-based systems to store private keys.
 # etc/ssl/certs/ is another conventional directory for storing SSL/TLS certificates.
-COPY    conf/default /etc/nginx/sites-enabled/
+COPY    ./conf/default /etc/nginx/sites-enabled/
 EXPOSE  443
 CMD     ["nginx", "-g", "daemon off;"]

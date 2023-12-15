@@ -1,0 +1,29 @@
+server {
+        
+        listen 443 ssl default_server;
+        ssl_protocols TLSv1.3;
+        ssl_certificate        /etc/ssl/certs/nc.crt;
+        ssl_certificate_key    /etc/ssl/private/nk.key;
+
+        server_name zasabri.42.fr;
+
+        root /var/www/html;
+        index index.php index.html index.htm ;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+               fastcgi_pass wordpress:9000;
+        }
+}
+
+server {
+        
+        listen 443 ssl;
+        ssl_protocols TLSv1.3;
+        ssl_certificate        /etc/ssl/certs/nc.crt;
+        ssl_certificate_key    /etc/ssl/private/nk.key;
+}

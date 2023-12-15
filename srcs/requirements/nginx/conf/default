@@ -8,7 +8,7 @@ server {
         server_name zasabri.42.fr;
 
         root /var/www/html;
-        index index.php index.html zakaria.html lmosahih.html;
+        index index.php index.html zasabri.html;
 
         location / {
                 try_files $uri $uri/ =404;

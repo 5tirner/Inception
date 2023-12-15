@@ -14,3 +14,5 @@ build :
 
 down :
 	$(SRCS) && $(DOWN)
+
+re : down up

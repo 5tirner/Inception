@@ -16,3 +16,5 @@ RUN     unzip /pkgs/myPack.zip -d /var/www/html
 #->www:data is a conventional username used for web server processes, it's created when we install nginx
 RUN     chown -R www-data:www-data /var/www/html
 RUN     rm -rf pkgs
+EXPOSE  9000
+CMD     ["php-fpm", "-F"]

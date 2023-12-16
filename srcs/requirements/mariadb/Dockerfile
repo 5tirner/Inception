@@ -8,15 +8,16 @@ RUN     apt install systemd -y
 
 RUN     systemctl enable mysql
 
-RUN     mysql -e "create database if not exist zsdb;"
+RUN     mysql -e "create database if not exists wpdb;"
 
-RUN     mysql -e "create user if not exists zasabri@'%' identified by 'el9b9ba9ib9b9ab+had-n4mt-l9hab';"
+RUN     mysql -e "create user if not exists ${USER}@'%' identified by '${USER_PSWD}';"
 #@% To give the user the rights to connects from any host
-RUN     mysql -e "grant all privileges on  zsdb.* to zasabri@'%';"
+
+RUN     mysql -e "grant all privileges on  ${DATABASE}.* to ${USER}@'%';"
 
 RUN     mysql -e "flush privileges;"
 
-RUN     mysql -e "alter user zasabri@localhost identified by 'testestes--' require none;"
+RUN     mysql -e "alter user root@localhost identified by 'Zs1234..' require none;"
 
 EXPOSE  3306
 

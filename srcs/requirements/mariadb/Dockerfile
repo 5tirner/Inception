@@ -8,4 +8,4 @@ RUN     apt install mariadb-server -y
 
 EXPOSE  3306
 
-CMD     ["mariadb"]
+CMD     ["mysqld"]

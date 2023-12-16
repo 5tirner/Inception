@@ -10,7 +10,7 @@ RUN     systemctl enable mysql
 
 RUN     mysql -e "create database if not exists wpdb;"
 
-RUN     mysql -e "create user if not exists ${USER}@'%' identified by '${USER_PSWD}';"
+RUN     mysql -e "create user if not exists zasabri@'%' identified by 'Zs1234..';"
 #@% To give the user the rights to connects from any host
 
 RUN     mysql -e "grant all privileges on  ${DATABASE}.* to ${USER}@'%';"

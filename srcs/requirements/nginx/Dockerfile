@@ -25,7 +25,11 @@ RUN apt install openssl \
     -out /etc/ssl/certs/nc.crt;
 # /etc/ssl/private/ is a common directory on Unix-based systems to store private keys.
 # etc/ssl/certs/ is another conventional directory for storing SSL/TLS certificates.
+
 RUN     rm -rf /etc/nginx/sites-enabled/default
+
 COPY    ./conf/default /etc/nginx/sites-enabled/
+
 EXPOSE  443
+
 CMD     ["nginx", "-g", "daemon off;"]

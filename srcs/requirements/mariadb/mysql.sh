@@ -10,5 +10,3 @@ mysql -e "create user if not exists zasabri@'%' identified by 'Zs1234..';"
 mysql -e "grant all privileges on  wpdb.* to zasabri@'%';"
 
 mysql -e "flush privileges;"
-
-mysqld

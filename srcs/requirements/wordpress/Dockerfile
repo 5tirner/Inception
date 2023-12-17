@@ -1,4 +1,4 @@
-FROM    debian
+FROM    debian:latest
 
 RUN     apt update -y
 
@@ -19,6 +19,6 @@ RUN     apt install mariadb-server -y
 
 RUN     apt install wget -y
 
-RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
+RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/cl
 
 EXPOSE  9000

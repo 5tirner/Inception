@@ -11,6 +11,4 @@ mysql -e "grant all privileges on  wpdb.* to zasabri@'%';"
 
 mysql -e "flush privileges;"
 
-mysql -e "alter user root@localhost identified by 'Zs1234..' require none;"
-
 mysqld

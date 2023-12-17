@@ -6,7 +6,7 @@ RUN     apt install mariadb-server -y
 
 RUN     mkdir zasabri
 
-COPY    mysql.sh zasabri
+COPY    ./tools/mysql.sh zasabri
 
 RUN     chmod 777 /zasabri/mysql.sh
 # RUN     systemctl enable mysql

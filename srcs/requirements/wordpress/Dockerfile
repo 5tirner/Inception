@@ -22,5 +22,3 @@ RUN     apt install wget -y
 RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O /usr/local/bin/wp
 
 EXPOSE  9000
-
-CMD     [""]

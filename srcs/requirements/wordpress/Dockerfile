@@ -17,5 +17,4 @@ RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cl
 RUN     chmod 777 wp-cli.phar
 COPY    ./tools/wp.sh .
 RUN     chmod 777 /zasabri/wp.sh
-EXPOSE  9000
-# CMD     [./wp.sh]
+CMD     [./wp.sh]

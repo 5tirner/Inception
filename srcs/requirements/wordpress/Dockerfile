@@ -13,8 +13,7 @@ RUN     apt install mariadb-server -y
 RUN     apt install wget -y
 RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN     chmod 777 wp-cli.phar
-RUN     ./wp-cli.phar core download --allow-root
-RUN     ./wp-cli.phar config create --dbname=wpdb
-RUN     
-
+RUN     mkdir zasabri
+COPY    ./tools/wp.sh /zasabri
 EXPOSE  9000
+CMD     [./zasabri/wp.sh]

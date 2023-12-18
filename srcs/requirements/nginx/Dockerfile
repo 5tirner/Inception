@@ -1,4 +1,4 @@
-FROM    debian:latest
+FROM    debian:12
 RUN     apt update -y
 RUN     apt install nginx -y
 # For Security i will install openssl to generte a self-signed SSLcertificate.

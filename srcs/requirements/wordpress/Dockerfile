@@ -14,6 +14,8 @@ RUN     apt install wget -y
 RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN     chmod 777 wp-cli.phar
 RUN     mkdir zasabri
+COPY    wp-cli.phar /zasabri
 COPY    ./tools/wp.sh /zasabri
+RUN     chmod 777 /zasabri/wp.sh
 EXPOSE  9000
 CMD     [./zasabri/wp.sh]

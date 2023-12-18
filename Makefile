@@ -1,18 +1,13 @@
-UP	= docker-compose up -d
-
-BUILD	= docker-compose build
+UP		= docker-compose up -d
 
 DOWN	= docker-compose down
 
-SRCS	= cd srcs
+WORKDIR	= cd srcs
 
 up :
-	$(SRCS) && $(UP)
-
-build :
-	$(SRCS) && $(UP)
+	$(WORKDIR) && $(UP)
 
 down :
-	$(SRCS) && $(DOWN)
+	$(WORKDIR) && $(DOWN)
 
 re : down up

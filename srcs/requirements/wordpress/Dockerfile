@@ -1,6 +1,5 @@
 FROM    debian:12
-RUN     mkdir zasabri
-WORKDIR /zasabri
+WORKDIR /var/www/html
 RUN     apt update -y
 #I will install services and dependencise for running wordpress app
 #Install the PHP programming language, which is required for running WordPress.
@@ -15,6 +14,6 @@ RUN     apt install mariadb-server -y
 RUN     apt install wget -y
 RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN     chmod 777 wp-cli.phar
-COPY    ./tools/wp.sh .
-RUN     chmod 777 /zasabri/wp.sh
-CMD     [./wp.sh]
+COPY    ./tools/wp.sh /bin
+RUN     chmod 777 /bin/wp.sh
+CMD     ["wp.sh"]

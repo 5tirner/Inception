@@ -1,4 +1,4 @@
-FROM    debian:12
+FROM    debian:11
 RUN     apt update -y
 RUN     apt install mariadb-server -y
 RUN     rm -rf /etc/mysql/mariadb.conf.d/50-server.cnf

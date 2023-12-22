@@ -1,4 +1,4 @@
-FROM    debian:12
+FROM    debian:11
 WORKDIR /var/www/html
 RUN     apt update -y
 #I will install services and dependencise for running wordpress app

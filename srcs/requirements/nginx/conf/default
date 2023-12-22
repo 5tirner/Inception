@@ -24,7 +24,11 @@ server {
 
         # SSL configuration
         
-        listen 8000 ;
+        listen 443 ssl default_server;
+        listen [::]:443 ssl default_server;
+        
+        ssl_certificate /etc/ssl/certs/nc.crt
+        ssl_certificate_key /etc/ssl/private/nk.key
         # Note: You should disable gzip for SSL traffic.
         # See: https://bugs.debian.org/773332
         #
@@ -58,7 +62,7 @@ server {
                #fastcgi_pass unix:/run/php/php7.4-fpm.sock;
                # With php-cgi (or other tcp sockets):
                fastcgi_pass wordpress:9000;
-               include fastcgi_params;
+               include fastcgi_params
         }
 
         # deny access to .htaccess files, if Apache's document root

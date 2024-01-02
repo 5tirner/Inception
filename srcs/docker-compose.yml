@@ -6,6 +6,6 @@
 version: "3.8"
 services:
   website:
-    images: nginx
-  ports:
-    - 7777:80
+    image: nginx
+    ports:
+      - "777777:80"

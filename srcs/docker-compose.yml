@@ -1,0 +1,11 @@
+#vesrion: "3.8"
+#services:
+#  mariadb:
+#  wordpress:
+#  nginx:
+version: "3.8"
+services:
+  website:
+    images: nginx
+  ports:
+    - 7777:80

@@ -14,8 +14,8 @@ RUN     apt install mariadb-server -y
 RUN     apt install wget -y
 RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN     chmod 777 wp-cli.phar
-RUN     rm -rf /etc/php/8.2/fpm/pool.d/www.conf
+RUN     rm -rf /etc/php/7.4/fpm/pool.d/www.conf
+COPY    ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 COPY    ./tools/wp.sh /bin
-COPY    ./conf/www.conf /etc/php/8.2/fpm/pool.d/
 RUN     chmod 777 /bin/wp.sh
 CMD     ["wp.sh"]

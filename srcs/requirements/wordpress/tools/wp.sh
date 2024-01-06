@@ -1,5 +1,6 @@
 #!/bin/bash
 ./wp-cli.phar core download --allow-root
+sleep 1
 ./wp-cli.phar config create --dbname=mydb \
                             --dbuser=zasabri \
                             --dbpass=Zs1234.. \
@@ -11,4 +12,4 @@
                             --admin_password=9ob9aba9ib9ob9abhadinaghmatla97ab \
                             --admin_email=molchi123@gmail.com \
                             --allow-root
-php-fpm8.2 -R -F
+php-fpm7.4 -R -F

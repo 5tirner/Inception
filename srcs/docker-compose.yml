@@ -8,4 +8,4 @@ services:
   website:
     image: nginx
     ports:
-      - "777777:80"
+      - "7777:80"

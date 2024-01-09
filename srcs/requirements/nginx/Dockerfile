@@ -24,5 +24,5 @@ RUN apt install openssl \
 # etc/ssl/certs/ is another conventional directory for storing SSL/TLS certificates.
 RUN     rm -rf /etc/nginx/sites-enabled/default
 COPY    ./conf/default /etc/nginx/sites-enabled/
-EXPOSE  443
+#EXPOSE  443
 CMD     ["nginx", "-g", "daemon off;"]

@@ -9,3 +9,4 @@ services:
     image: nginx
     ports:
       - "7777:80"
+    restart: always

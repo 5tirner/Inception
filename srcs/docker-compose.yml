@@ -9,4 +9,8 @@ services:
     image: nginx
     ports:
       - "7777:80"
+    volumes:
+      - store:/root
     restart: always
+volumes:
+  store:

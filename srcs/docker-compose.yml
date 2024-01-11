@@ -1,16 +1,10 @@
-#vesrion: "3.8"
-#services:
-#  mariadb:
-#  wordpress:
-#  nginx:
 version: "3.8"
 services:
-  website:
-    image: nginx
+  mariadb:
+    image: ./requirements/mariadb
     ports:
-      - "7777:80"
+      - "3306"
     volumes:
       - store:/root
-    restart: always
 volumes:
   store:

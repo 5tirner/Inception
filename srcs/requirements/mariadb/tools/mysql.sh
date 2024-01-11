@@ -1,5 +1,4 @@
 #!/bin/bash
-
 service mariadb start
 mysql -e "create database if not exists wpdb;"
 mysql -e "create user if not exists zasabri@'%' identified by 'Zs1234..';"

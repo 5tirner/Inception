@@ -1,10 +1,8 @@
 version: "3.8"
 services:
   mariadb:
-    image: ./requirements/mariadb
-    ports:
-      - "3306"
+    build: ./requirements/mariadb
+    image: mariadb
     volumes:
       - store:/root
-volumes:
-  store:
+    restart: always

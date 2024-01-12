@@ -3,6 +3,35 @@ services:
   mariadb:
     build: ./requirements/mariadb
     image: mariadb
+    container_name: mariadb
+    networks:
+      - zakNet
     volumes:
-      - store:/root
-    restart: always
+      - mariadb:/home/zasabri/data
+  wordpress:
+    depends_on:
+      - mariadb
+    build: ./requirements/wordpress
+    image: wordpress
+    container_name: wordpress
+    networks:
+      - zakNet
+    volumes:
+      - wordpress:/home/zasabri/data
+  nginx:
+    depends_on:
+      - wordpress
+    build: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    ports:
+      - "443:443"
+    networks:
+      - zakNet
+    volumes:
+      - wordpress:/home/zasabri/data
+volumes:
+  wordpress:
+  mariadb:
+networks:
+  zakNet:

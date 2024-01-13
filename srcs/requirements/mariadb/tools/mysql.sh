@@ -6,3 +6,4 @@ mariadb -e "create user if not exists zasabri@'%' identified by 'Zs1234..';"
 mariadb -e "grant all privileges on  wpdb.* to zasabri@'%';"
 mariadb -e "flush privileges;"
 #while true; do echo .; done;
+mariadb

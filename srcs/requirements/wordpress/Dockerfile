@@ -1,4 +1,6 @@
 FROM    debian:11
+RUN     mkdir timssah
+WORKDIR /timssah
 RUN     apt update -y
 #I will install services and dependencise for running wordpress app
 #Install the PHP programming language, which is required for running WordPress.

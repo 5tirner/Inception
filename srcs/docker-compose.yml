@@ -17,7 +17,7 @@ services:
     networks:
       - zakNet
     volumes:
-      - wordpress:/home/zasabri/data
+      - wordpress:/var/www/html/
   nginx:
     depends_on:
       - wordpress
@@ -29,7 +29,7 @@ services:
     networks:
       - zakNet
     volumes:
-      - wordpress:/home/zasabri/data
+      - wordpress:/var/www/html/
 volumes:
   wordpress:
   mariadb:

@@ -8,6 +8,7 @@ RUN     apt update -y
 RUN     apt install php -y
 #To run php scripts in the web.
 RUN     apt install php-fpm -y
+RUN     apt install sendmail -y
 #Adds MySQL support for PHP, WordPress typically uses MySQL as its database.
 RUN     apt install php-mysql -y
 RUN     apt install mariadb-server -y

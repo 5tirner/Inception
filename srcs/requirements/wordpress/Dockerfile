@@ -1,5 +1,6 @@
 FROM    debian:11
 RUN     mkdir timssah
+RUN     mkdir /run/php
 WORKDIR /timssah
 RUN     apt update -y
 #I will install services and dependencise for running wordpress app
@@ -15,6 +16,7 @@ RUN     apt install mariadb-server -y
 RUN     apt install wget -y
 RUN     wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN     chmod 777 wp-cli.phar
+RUN     mv -f wp-cli.phar /bin
 RUN     rm -rf /etc/php/7.4/fpm/pool.d/www.conf
 COPY    ./conf/www.conf /etc/php/7.4/fpm/pool.d/
 COPY    ./tools/wp.sh /bin

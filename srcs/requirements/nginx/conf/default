@@ -12,7 +12,7 @@ server {
 
         root /var/www/html;
 
-        index index.php index.html index.htm index.nginx-debian.html;
+        index index.php index.html;
 
         server_name zasabri.42.fr;
 
@@ -23,6 +23,7 @@ server {
         }
 
         location ~ \.php$ {
+                index.php;
                 include snippets/fastcgi-php.conf;
                 # With php-fpm (or other unix sockets):
                 # fastcgi_pass unix:/run/php/php7.4-fpm.sock;

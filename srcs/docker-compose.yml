@@ -1,37 +1,49 @@
 version: "3.8"
 services:
-  mariadb:
-    build: ./requirements/mariadb
-    image: mariadb
-    container_name: mariadb
+  nginx:
+    build: ./requirements/nginx/
+    image: nginx
+    container_name: nginx
     networks:
-      - zakNet
+      - net
+    ports:
+      - "443:443"
     volumes:
-      - mariadb:/home/zasabri/data
-  wordpress:
+      - wp-data:/var/www/html/
     depends_on:
-      - mariadb
-    build: ./requirements/wordpress
+      - wordpress
+  wordpress:
+    build: ./requirements/wordpress/
     image: wordpress
     container_name: wordpress
     networks:
-      - zakNet
+      - net
     volumes:
-      - wordpress:/var/www/html/
-  nginx:
+      - wp-data:/timssah/
     depends_on:
-      - wordpress
-    build: ./requirements/nginx
-    image: nginx
-    container_name: nginx
-    ports:
-      - "4444:80"
-    networks:
-      - zakNet
-    volumes:
-      - wordpress:/var/www/html/
-volumes:
-  wordpress:
+      - mariadb
   mariadb:
+    build: ./requirements/mariadb/
+    image: mariadb
+    container_name: mariadb
+    networks:
+      - net
+    volumes:
+      - mariadb:/root
+    restart: always
 networks:
-  zakNet:
+  net:
+    driver: bridge
+volumes:
+  wp-data:
+    driver: local
+    driver_opts:
+      device: /home/zasabri/data/
+      type: none
+      o: bind
+  mariadb:
+    driver: local
+    driver_opts:
+      device: /home/zasabri/data/
+      type: none
+      o: bind

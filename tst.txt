@@ -1,3 +1,40 @@
+nginx configuration
+server {
+        # listen 80 default_server;
+        # listen [::]:80 default_server;
+
+        listen 443 ssl ;
+        listen [::]:443 ssl ;
+        
+
+        ssl_certificate /etc/ssl/certs/nc.crt;
+        ssl_certificate_key /etc/ssl/private/nk.key;
+        ssl_protocols TLSv1.3;
+
+        root /var/www/html;
+
+        index index.php index.html;
+
+        server_name zasabri.42.fr;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                # With php-fpm (or other unix sockets):
+                # fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+                # With php-cgi (or other tcp sockets):
+                fastcgi_pass wordpress:9000;
+                include fastcgi_params;
+        }
+
+}
+
+nginx dockerfile:
 FROM    debian:11
 RUN     apt update -y
 RUN     apt install nginx -y
@@ -22,5 +59,8 @@ RUN apt install openssl \
     -out /etc/ssl/certs/nc.crt;
 # /etc/ssl/private/ is a common directory on Unix-based systems to store private keys.
 # etc/ssl/certs/ is another conventional directory for storing SSL/TLS certificates.
+RUN     rm -rf /etc/nginx/sites-enabled/default
 COPY    ./conf/default /etc/nginx/sites-enabled/
 CMD     ["nginx", "-g", "daemon off;"]
+
+please link all the information that i give you from the start of the convertation and help me to make the things right

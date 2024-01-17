@@ -1,49 +1,59 @@
 version: "3.8"
+
+networks:
+  net:
+    name: net
+    driver: bridge
+
+volumes:
+  mariadbV:
+    driver: local
+    name: mariadbV
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/zasabri/data/mariadb
+  wordpressV:
+    driver: local
+    name: wordpressV
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/zasabri/data/wordpress
+
 services:
   nginx:
-    build: ./requirements/nginx/
-    image: nginx
     container_name: nginx
-    networks:
-      - net
+    image: nginx
+    build: requirements/nginx
+    depends_on:
+      - wordpress
     ports:
       - "443:443"
     volumes:
-      - wp-data:/var/www/html/
-    depends_on:
-      - wordpress
-  wordpress:
-    build: ./requirements/wordpress/
-    image: wordpress
-    container_name: wordpress
+      - wordpressV:/var/www/html
     networks:
       - net
-    volumes:
-      - wp-data:/timssah/
+    restart: always
+
+  wordpress:
+    container_name: wordpress
+    image: wordpress
+    build: requirements/wordpress
     depends_on:
       - mariadb
-  mariadb:
-    build: ./requirements/mariadb/
-    image: mariadb
-    container_name: mariadb
+    volumes:
+      - wordpressV:/var/www/html
     networks:
       - net
-    volumes:
-      - mariadb:/root
     restart: always
-networks:
-  net:
-    driver: bridge
-volumes:
-  wp-data:
-    driver: local
-    driver_opts:
-      device: /home/zasabri/data/
-      type: none
-      o: bind
+
   mariadb:
-    driver: local
-    driver_opts:
-      device: /home/zasabri/data/
-      type: none
-      o: bind
+    container_name: mariadb
+    image: mariadb
+    build: requirements/mariadb
+    volumes:
+      - mariadbV:/var/lib/mysql
+    networks:
+      - net
+    restart: always

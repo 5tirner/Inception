@@ -1,10 +1,22 @@
-UP		= docker-compose up -d
+BUILD	= docker-compose build
+
+UP		= docker-compose up
 
 STOP	= docker-compose stop
 
 DOWN	= docker-compose down
 
 WORKDIR	= cd srcs
+
+SHOW	= docker system df
+
+INFO	= echo "Running Containers:" && docker ps && echo "Images:" && docker images && echo "Volumes:" && docker volume ls && echo "Networks:" && docker network ls 
+
+all:
+	$(WORKDIR) && $(BUILD) && $(UP)
+
+build:
+	$(WORKDIR) && $(BUILD)
 
 up :
 	$(WORKDIR) && $(UP)
@@ -15,4 +27,12 @@ stop :
 down :
 	$(WORKDIR) && $(DOWN)
 
-re : down up
+info:
+	$(INFO)
+
+show:
+	$(SHOW)
+
+clean:
+	docker system prune -a
+re : down all

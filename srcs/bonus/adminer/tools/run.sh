@@ -1,15 +1,6 @@
 #!/bin/bash
-
 service apache2 start
-
-service apache2 reload
-
 service mariadb start
-
-a2enconf php*-fpm
-
-a2enconf adminer
-
-service apache2 reload
-
+ln -s   /etc/apache2/conf-available/adminer.conf /etc/apache2/conf-enabled/
 service apache2 restart
+while true; do sleep 1; done;

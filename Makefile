@@ -36,7 +36,7 @@ show:
 clean:
 	docker system prune -a
 
-fclean: clean
+fclean: down clean
 	sudo rm -rf /home/zasabri/data/wordpress/* /home/zasabri/data/mariadb/*
 
 re : down all

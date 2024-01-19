@@ -13,7 +13,7 @@ server {
 
         index index.php index.html;
 
-        server_name zasabri.42.fr;
+        server_name _;
 
         location / {
                 # First attempt to serve request as file, then

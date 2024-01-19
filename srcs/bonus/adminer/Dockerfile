@@ -1,8 +1,11 @@
-FROM    adminer
-# RUN     apt update -y
-# RUN     apt install mariadb-server -y
-# RUN     apt install adminer -y
-# COPY    ./tools/run.sh /bin
-# COPY    ./conf/000-default.conf /etc/apache2/sites-available
-# RUN     chmod 777 /bin/run.sh
-# CMD ["run.sh"]
+FROM debian:11
+
+RUN apt update -y && apt install apache2 -y
+
+RUN service apache2 start
+
+RUN apt install adminer -y
+
+RUN ln -s /etc/apache2/conf-available/adminer.conf /etc/apache2/conf-enabled/
+
+RUN service apache2 restart

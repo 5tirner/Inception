@@ -1,11 +1,10 @@
 version: "3.8"
 
-#Network
 networks:
   net:
     name: net
     driver: bridge
-#Volumes
+
 volumes:
   mariadbV:
     driver: local

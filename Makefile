@@ -10,7 +10,7 @@ WORKDIR	= cd srcs
 
 SHOW	= docker system df
 
-INFO	= echo "Running Containers:" && docker ps && echo "Images:" && docker images && echo "Volumes:" && docker volume ls && echo "Networks:" && docker network ls 
+INFO	= @echo "Running Containers:" && docker ps && echo "Images:" && docker images && echo "Volumes:" && docker volume ls && echo "Networks:" && docker network ls 
 
 all:
 	$(WORKDIR) && $(BUILD) && $(UP)

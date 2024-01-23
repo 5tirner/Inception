@@ -9,7 +9,7 @@ RUN     apt install php -y
 RUN     apt install php-fpm -y
 #Adds MySQL support for PHP, WordPress typically uses mariadb as its database.
 RUN     apt install php-mysql -y
-RUN     apt install mariadb-server -y
+#RUN     apt install mariadb-server -y
 # I will install WordPress Command Line Interface.
 # Command Line Interface is acommand-line tool for managing WordPress installations.
 RUN     apt install wget -y
